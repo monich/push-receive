@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE node PUBLIC
+  "-//freedesktop//DTD D-Bus Object Introspection 1.0//EN"
+  "http://standards.freedesktop.org/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.ofono.PushNotification">
+    <method name="RegisterAgent">
+      <arg name="path" type="o" direction="in"/>
+    </method>
+    <method name="UnregisterAgent">
+      <arg name="path" type="o" direction="in"/>
+    </method>
+    <signal name="ReceiveNotification">
+      <arg name="notification" type="ay"/>
+      <arg name="info" type="a{sv}"/>
+    </signal>
+    <signal name="Release"/>
+  </interface>
+</node>
