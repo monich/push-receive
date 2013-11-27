@@ -5,6 +5,8 @@
 #include <gio/gio.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <errno.h>
 
 /* Generated headers */
 #include "org_ofono_manager.h"
@@ -55,7 +57,7 @@ push_notification_agent_receive_notification(
         }
         fclose(out);
     } else {
-        printf("Can't open %s\n", fname);
+        printf("Can't open %s: %s\n", fname, strerror(errno));
     }
     org_ofono_push_notification_agent_complete_receive_notification(agent,call);
     g_main_loop_quit(loop);
