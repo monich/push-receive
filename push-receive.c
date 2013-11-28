@@ -47,7 +47,7 @@ push_notification_agent_receive_notification(
     const guint8* bytes = g_variant_get_fixed_array(data, &len, 1);
     FILE* out = fopen(fname, "wb");
     printf("Parameter type %s\n", g_variant_get_type_string(data));
-    printf("Received push notification (%u bytes)\n", len);
+    printf("Received push notification (%u bytes)\n", (guint)len);
     printf("Dictionary: %u entries\n", g_hash_table_size(dict));
     if (out) {
         if (fwrite(bytes, 1, len, out) == len) {
@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
         err_exit("Error getting list of modems", err);
     }
 
-    printf("%d modem(s) found\n", g_variant_n_children(modems));
+    printf("%u modem(s) found\n", (guint)g_variant_n_children(modems));
     if (g_variant_n_children(modems) > 0) {
         OrgOfonoPushNotification* push;
 
